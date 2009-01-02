@@ -5,7 +5,7 @@ require Pod::Perldoc;
 use LWP::UserAgent;
 use base qw(Pod::Perldoc);
 our ($VERSION);
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 ################################################################
 # Change the following to reflect your setup
@@ -24,7 +24,7 @@ sub grand_search_init {
     push @found, $filename;
     return @found;
   }
-  elsif ($filename = get_soap($pages->[0])) {
+  elsif ($filename = get_soap($self, $pages->[0])) {
     push @found, $filename;
     return @found;
   }
@@ -36,7 +36,7 @@ sub grand_search_init {
 sub get_lwp {
   my ($self, $mod) = @_;
   my $ua = LWP::UserAgent->new;
-  $ua->agent("Pod/Perldocs 0.15 ");
+  $ua->agent("Pod/Perldocs 0.16 ");
   push @{ $ua->requests_redirectable }, 'POST';
   # Create a request
   my $req = HTTP::Request->new(POST => $pod_server);

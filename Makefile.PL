@@ -13,13 +13,17 @@ my %opts = (
 			},
 	   );
 
-if ($ExtUtils::MakeMaker::VERSION >= 5.43) {
-   $opts{ABSTRACT_FROM} = 'lib/Pod/Perldocs.pm';
-   $opts{AUTHOR} = 'Randy Kobes <r.kobes@uwinnipeg.ca>';
+my $eu_version = $ExtUtils::MakeMaker::VERSION;
+if ($eu_version >= 5.43) {
+  $opts{ABSTRACT_FROM} = q{lib/Pod/Perldocs.pm};
+  $opts{AUTHOR} = 'Randy Kobes <r.kobes@uwinnipeg.ca>';
+}
+if ($eu_version > 6.11 ) {
+  $opts{NO_META} = 1;
 }
 
 my %prereqs = ('Pod::Perldoc' => 0,
-               'SOAP::Lite' => 0.60,
+               'LWP' => 0,
 	       );
 
 WriteMakefile( %opts, PREREQ_PM => \%prereqs);

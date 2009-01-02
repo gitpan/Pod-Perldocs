@@ -4,7 +4,7 @@ my $build = Module::Build->new(
   license => 'perl',
   requires => {
                'Pod::Perldoc' => '0.1',
-               'SOAP::Lite' => '0.60',
+               'LWP' => '0',
               },
   dist_version_from => 'lib/Pod/Perldocs.pm',
   dist_author => ['Randy Kobes <r.kobes@uwinnipeg.ca>'],
